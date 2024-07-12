@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+body
+{
+  background-color: #b5e8df;
+  padding: 20px;
+
+  color: #666;
+
+  font-family: sans-serif;
+
+  font-size: 16px;
+
+  line-height: 1.5;
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+  text-align: center;
+}

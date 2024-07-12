@@ -1,0 +1,118 @@
+/* General styles for the app container */
+.container {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #999292;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+p {
+  margin: 7;
+  text-align: center;
+}
+
+/* Styles for the app title */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #d60000;
+}
+
+/* Styles for the search bar */
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search label {
+  margin-right: 14px;
+  font-weight: bold;
+
+}
+
+.search input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #959494;
+  border-radius: 4px;
+}
+
+.search button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styles for the weather cards */
+.card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin-bottom: 0;
+}
+
+/* Styles for the current weather card */
+.current-weather {
+  background-color: #f8f9fa;
+}
+
+/* Styles for the hourly forecast cards */
+.hourly-forecast {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hourly-forecast .card {
+  width: 25%;
+  margin-right: 5%;
+}
+
+/* Styles for the weekly forecast cards */
+.weekly-forecast {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.weekly-forecast .card {
+  width: 33%;
+  margin-right: 5%;
+}
+
+/* Styles for Font Awesome icons */
+.weather-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.temperature-icon {
+  color: #f39c12;
+}
+
+.condition-icon {
+  color: #3498db;
+}
+
+.time-icon {
+  color: #27ae60;
+}
+
+.calendar-icon {
+  color: #e74c3c;
+}
