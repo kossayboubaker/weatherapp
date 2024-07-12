@@ -1,7 +1,7 @@
 <div class="container">
   <!-- Titre de l'application -->
   <h1>Weather App</h1>
-
+  <img src="weather.png" alt="weather" style="width: 100px; height: 100px;">
   <!-- Barre de recherche pour saisir le nom de la ville -->
   <div class="search">
     <label for="city">City:</label>
@@ -17,6 +17,7 @@
     <!-- Affichage du nom de la ville pour les prévisions hebdomadaires -->
     <div *ngIf="weeklyForecast" class="card weekly-forecast" style="background-color: rgb(255, 244, 229);">
       <p><span class="font-semibold mt-1 text-gray-500">Nom: <b>{{ city }}</b></span></p>
+
     </div>
   </div>
 
@@ -30,9 +31,10 @@
       </span>
       Temperature: {{ currentWeather.main.temp }}°C ({{ currentWeather.main.temp_min }}°C - {{ currentWeather.main.temp_max }}°C)
     </p>
-    <p>Pressure: {{ currentWeather.main.pressure }} hPa</p>
-    <p>Wind: {{ currentWeather.wind.speed }} m/s</p>
-    <p>Humidity: {{ currentWeather.main.humidity }}%</p>
+    
+    <p>Pressure: {{ currentWeather.main.pressure }} hPa / Visibility: {{ currentWeather.visibility }} m</p>
+    <p>Wind: {{ currentWeather.wind.speed }} m/s / ({{ currentWeather.wind.deg }}°)</p>
+    <p>Humidity: {{ currentWeather.main.humidity }}% / Feels like: {{ currentWeather.main.feels_like }}°C</p>
     <p>Condition: {{ currentWeather.weather[0].description }}</p>
   </div>
 
@@ -49,11 +51,11 @@
         </span>
       </p>
       <!-- Affichage de le previsions meteo en function de la description -->
-      <p>Pressure: {{ hour.main.pressure }} hPa</p>
+      <p>Pressure: {{ hour.main.pressure }} hPa / Visibility: {{ hour.visibility }} m</p>
       <!-- Affichage de la vitesse du vent -->
-      <p>Wind: {{ hour.wind.speed }} m/s</p>
+      <p>Wind: {{ hour.wind.speed }} m/s / {{ hour.wind.deg }}°</p>
       <!-- Affichage de l'humidité -->
-      <p>Humidity: {{ hour.main.humidity }}%</p>
+      <p>Humidity: {{ hour.main.humidity }}% / Feels like: {{ hour.main.feels_like }}°C</p>
       <!-- Affichage de la description de la couverture d'air -->
       <p>Condition: {{ hour.weather[0].description }}</p>
       <!-- Affichage de la temperature -->
@@ -71,15 +73,15 @@
         Date: {{ day.dt_txt }} | Condition: {{ day.weather[0].description }}
       </p>
       <!-- Affichage de le previsions météo en function de la description -->
-      <p>Pressure: {{ day.main.pressure }} hPa</p>
+      <p>Pressure: {{ day.main.pressure }} hPa / Visibility: {{ day.visibility }} m </p>
       <!-- Affichage de la vitesse du vent -->
-      <p>Wind: {{ day.wind.speed }} m/s</p>
+      <p>Wind: {{ day.wind.speed }} m/s / {{ day.wind.deg }}°</p>
       <!-- Affichage de l'humidité -->
-      <p>Humidity: {{ day.main.humidity }}%</p>
+      <p>Humidity: {{ day.main.humidity }}% / Feels like: {{ day.main.feels_like }}°C</p>
       <!-- Affichage de la description de la meteo -->
-      <p>Condition: {{ day.weather[0].description }}</p>
+      <p>Condition: {{ day.weather[0].description }} </p>
       <!-- Affichage de la temperature de la meteo -->
-      <p>Temperature: {{ day.main.temp }}°C ({{ day.main.temp_min }}°C - {{ day.main.temp_max }}°C)</p>
+      <p>Temperature: {{ day.main.temp }}°C ({{ day.main.temp_min }}°C - {{ day.main.temp_max }}°C) </p>
     </div>
   </div>
 </div>
