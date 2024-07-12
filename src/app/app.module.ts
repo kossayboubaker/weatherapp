@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 
 // Add the icons to the library
 library.add(fas);
-
+// correspond to the name you used in the import statement
 @NgModule({
   declarations: [
     AppComponent

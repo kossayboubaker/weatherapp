@@ -1,50 +1,85 @@
 <div class="container">
+  <!-- Titre de l'application -->
   <h1>Weather App</h1>
 
+  <!-- Barre de recherche pour saisir le nom de la ville -->
   <div class="search">
     <label for="city">City:</label>
+    <!-- Liaison bidirectionnelle (two-way binding) pour lier l'entrée utilisateur à la propriété 'city' dans le composant -->
     <input type="text" [(ngModel)]="city" id="city" placeholder="Enter city name" />
+    <!-- Bouton pour déclencher la recherche de la météo -->
     <button (click)="searchWeather()">Search</button>
   </div>
 
+  <!-- Carte pour afficher les informations météo actuelles et prévisions -->
+  <div class="card" *ngIf="currentWeather || hourlyForecast || weeklyForecast" style="background-color: rgb(255, 244, 229);">
 
-
-<div class="card" *ngIf="currentWeather || hourlyForecast || weeklyForecast" style="background-color: rgb(255, 244, 229); ">
-  <div *ngIf="weeklyForecast" class="card weekly-forecast" style="background-color: rgb(255, 244, 229);">
-      <p><span class="font-semibold mt-1 text-gray-500" >
-          Nom: <b>{{ city}} </b> </span></p>
+    <!-- Affichage du nom de la ville pour les prévisions hebdomadaires -->
+    <div *ngIf="weeklyForecast" class="card weekly-forecast" style="background-color: rgb(255, 244, 229);">
+      <p><span class="font-semibold mt-1 text-gray-500">Nom: <b>{{ city }}</b></span></p>
+    </div>
   </div>
-</div>
 
+  <!-- Section pour afficher les informations de la météo actuelle -->
   <div *ngIf="currentWeather" class="card current-weather">
     <h2>Current Weather</h2>
-    <p><span class="text-6xl font-bold">
-      <img [src]="getTemperatureIcon(currentWeather.weather[0].description)" class="weather-icon" />
-    </span>
+    <p>
+      <!-- Affichage de l'icône météo en function de la description -->
+      <span class="text-6xl font-bold">
+        <img [src]="getTemperatureIcon(currentWeather.weather[0].description)" class="weather-icon" />
+      </span>
       Temperature: {{ currentWeather.main.temp }}°C ({{ currentWeather.main.temp_min }}°C - {{ currentWeather.main.temp_max }}°C)
     </p>
+    <p>Pressure: {{ currentWeather.main.pressure }} hPa</p>
+    <p>Wind: {{ currentWeather.wind.speed }} m/s</p>
+    <p>Humidity: {{ currentWeather.main.humidity }}%</p>
     <p>Condition: {{ currentWeather.weather[0].description }}</p>
   </div>
 
+  <!-- Section pour afficher les prévisions horaires -->
   <div *ngIf="hourlyForecast" class="card hourly-forecast">
     <h2 class="text-center">Hourly Forecast</h2>
+    <!-- Boucle sur les prévisions horaires -->
     <div *ngFor="let hour of hourlyForecast" class="card">
-      <p><span class="text-6xl font-bold">
-        <img [src]="getTemperatureIcon(hour.weather[0].description)" class="weather-icon" />
-        Time: {{ hour.dt_txt }}</span>
+      <p>
+        <span class="text-6xl font-bold">
+          <!-- Affichage de l'icône météo en function de la description -->
+          <img [src]="getTemperatureIcon(hour.weather[0].description)" class="weather-icon" />
+          Time: {{ hour.dt_txt }}
+        </span>
       </p>
+      <!-- Affichage de le previsions meteo en function de la description -->
+      <p>Pressure: {{ hour.main.pressure }} hPa</p>
+      <!-- Affichage de la vitesse du vent -->
+      <p>Wind: {{ hour.wind.speed }} m/s</p>
+      <!-- Affichage de l'humidité -->
+      <p>Humidity: {{ hour.main.humidity }}%</p>
+      <!-- Affichage de la description de la couverture d'air -->
+      <p>Condition: {{ hour.weather[0].description }}</p>
+      <!-- Affichage de la temperature -->
       <p>Temperature: {{ hour.main.temp }}°C ({{ hour.main.temp_min }}°C - {{ hour.main.temp_max }}°C)</p>
     </div>
   </div>
 
+  <!-- Section pour afficher les prévisions hebdomadaires -->
   <div *ngIf="weeklyForecast" class="card weekly-forecast">
     <h2>Weekly Forecast</h2>
+    <!-- Boucle sur les prévisions hebdomadaires -->
     <div *ngFor="let day of weeklyForecast" class="card">
       <p>
         <img [src]="getTemperatureIcon(day.weather[0].description)" class="weather-icon" />
         Date: {{ day.dt_txt }} | Condition: {{ day.weather[0].description }}
       </p>
-      <p>Temperature: {{ day.main.temp }}°C ({{ day.main.temp_min }}°C - {{ day.main.temp_max }}°C) </p>
+      <!-- Affichage de le previsions météo en function de la description -->
+      <p>Pressure: {{ day.main.pressure }} hPa</p>
+      <!-- Affichage de la vitesse du vent -->
+      <p>Wind: {{ day.wind.speed }} m/s</p>
+      <!-- Affichage de l'humidité -->
+      <p>Humidity: {{ day.main.humidity }}%</p>
+      <!-- Affichage de la description de la meteo -->
+      <p>Condition: {{ day.weather[0].description }}</p>
+      <!-- Affichage de la temperature de la meteo -->
+      <p>Temperature: {{ day.main.temp }}°C ({{ day.main.temp_min }}°C - {{ day.main.temp_max }}°C)</p>
     </div>
   </div>
 </div>
